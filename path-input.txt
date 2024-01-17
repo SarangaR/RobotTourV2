@@ -1,0 +1,41 @@
+tile 1
+left
+tile 1
+right
+tile 1
+left
+tile 2
+left
+tile 1
+left
+tile 1
+left
+left
+tile 1
+right
+tile 1
+right
+tile 2
+right
+tile 1
+left
+tile 1
+left
+tile 3
+left
+tile 1
+left
+tile 1
+right
+tile 1
+right
+tile 1
+left
+tile 1
+left
+tile 1
+left
+left
+tile 1
+right
+tile 1
