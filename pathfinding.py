@@ -87,6 +87,3 @@ def shortestPath():
         instructions.append(f"tile {dist}")
     for s in instructions:
         print(s)
-
-if __name__ == "__main__":
-    shortestPath()
