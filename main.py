@@ -6,7 +6,7 @@ import numbers
 import constants as Constants
 import pathfinding as Pathfinding
 
-# Pathfinding.shortestPath()
+Pathfinding.shortestPath()
 
 robot = Robot()
 

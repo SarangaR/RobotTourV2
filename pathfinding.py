@@ -1,5 +1,9 @@
 from collections import deque
 
+# TO-DO: 
+# potentially cutting corners, e.g. 45 degree turns
+# account for turns in shortest path (find time taken for a turn/moving forward)
+
 N = 9
 
 dx = [1, 0, -1, 0]
@@ -29,7 +33,8 @@ def shortestPath():
     stdout = open("path-input.txt", "w")
     
     start = tuple(map(int, stdin.readline().split()))
-    target = tuple(map(int, stdin.readline().split()))
+    a, b = map(int, stdin.readline().split())
+    target = (a * 2 + 1, b * 2 + 1)
 
     n_bonus = int(stdin.readline())
     bonus_zones = {}
@@ -37,10 +42,29 @@ def shortestPath():
         x, y = map(int, stdin.readline().split())
         p = (x * 2 + 1, y * 2 + 1)
         bonus_zones[p] = i
-    n_wood = int(stdin.readline())
+    # n_wood = int(stdin.readline())
+    n_wood = 0
     wood_blocks = [[False] * N for _ in range(N)]
+    wood_locations = []
+    for i in range(4):
+        s = stdin.readline()
+        for j in range(3):
+            if s[j] == '1':
+                # wood_blocks[(j + 1) * 2][(3 - i) * 2 + 1] = True
+                wood_locations.append(((j + 1) * 2, (3 - i) * 2 + 1))
+                n_wood += 1
+    for i in range(3):
+        s = stdin.readline()
+        for j in range(4):
+            if s[j] == '1':
+                # wood_blocks[j * 2 + 1][(i + 1) * 2] = True
+                wood_locations.append((j * 2 + 1, (3 - i) * 2))
+                n_wood += 1
+    # ended here
     for i in range(n_wood):
-        p = tuple(map(int, stdin.readline().split()))
+        # p = tuple(map(int, stdin.readline().split()))
+        p = wood_locations[i]
+        # print(p)
         if p[0] % 2:
             wood_blocks[p[0]][p[1]] = True
             if p[0] + 1 < N:
@@ -64,6 +88,7 @@ def shortestPath():
 
     curr_dir = 0 if start[0] == 0 else 2 if start[0] == N - 1 else 1 if start[1] == 0 else 3
     instructions = []
+    cum = 0.5
     for i in range(len(minimum_path[target[0]][target[1]][(1 << n_bonus) - 1]) - 1):
         a = minimum_path[target[0]][target[1]][(1 << n_bonus) - 1][i]
         b = minimum_path[target[0]][target[1]][(1 << n_bonus) - 1][i + 1]
@@ -77,14 +102,19 @@ def shortestPath():
             ndir = 1
         else:
             ndir = 3
+        if ndir != curr_dir:
+            instructions.append("tile " + str(int(cum)))
+            cum = 0
         if abs(ndir - curr_dir) == 2:
-            instructions.extend(["left", "left"])
+            instructions.append("turn 180")
         elif ndir - curr_dir == 1 or ndir - curr_dir == -3:
             instructions.append("left")
         elif ndir - curr_dir == -1 or ndir - curr_dir == 3:
             instructions.append("right")
         curr_dir = ndir
-        instructions.append("tile " + str(dist))
+        cum += 0.5
+    if cum != 0:
+        instructions.append ("tile " + str(int(cum)))
     for s in instructions:
         stdout.write(s + "\n")
     stdin.close()
