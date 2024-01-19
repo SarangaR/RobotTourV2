@@ -35,4 +35,4 @@ TOLERANCE = 1 #degrees
 
 D_TOLERANCE = 5 #encoder ticks
 
-ROBOT_LENGTH = 150 #mm
+ROBOT_LENGTH = 171 #mm
