@@ -1,5 +1,4 @@
 from collections import deque
-import sys
 
 N = 9
 
@@ -26,21 +25,22 @@ def bfs(start, bonus_zones, wood_blocks, minimum_path):
                     q.append((ncoord, ngates_visited))
 
 def shortestPath():    
-    sys.stdin = open("board-input.txt", "r")
-    sys.stdout = open("path-input.txt", "w")
-    start = tuple(map(int, input().split()))
-    target = tuple(map(int, input().split()))
+    stdin = open("board-input.txt", "r")
+    stdout = open("path-input.txt", "w")
+    
+    start = tuple(map(int, stdin.readline().split()))
+    target = tuple(map(int, stdin.readline().split()))
 
-    n_bonus = int(input())
+    n_bonus = int(stdin.readline())
     bonus_zones = {}
     for i in range(n_bonus):
-        x, y = map(int, input().split())
+        x, y = map(int, stdin.readline().split())
         p = (x * 2 + 1, y * 2 + 1)
         bonus_zones[p] = i
-    n_wood = int(input())
+    n_wood = int(stdin.readline())
     wood_blocks = [[False] * N for _ in range(N)]
     for i in range(n_wood):
-        p = tuple(map(int, input().split()))
+        p = tuple(map(int, stdin.readline().split()))
         if p[0] % 2:
             wood_blocks[p[0]][p[1]] = True
             if p[0] + 1 < N:
@@ -84,6 +84,8 @@ def shortestPath():
         elif ndir - curr_dir == -1 or ndir - curr_dir == 3:
             instructions.append("right")
         curr_dir = ndir
-        instructions.append(f"tile {dist}")
+        instructions.append("tile " + str(dist))
     for s in instructions:
-        print(s)
+        stdout.write(s + "\n")
+    stdin.close()
+    stdout.close()

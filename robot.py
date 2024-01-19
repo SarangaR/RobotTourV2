@@ -13,6 +13,9 @@ class Robot:
         self.left = Motor(Constants.LEFT_MOTOR_PORT)
         self.right = Motor(Constants.RIGHT_MOTOR_PORT)
 
+        print(Constants.WHEEL_DIAMETER)
+        print(Constants.TRACK_WIDTH)
+
         self.drive = DriveBase(self.left, self.right, Constants.WHEEL_DIAMETER, Constants.TRACK_WIDTH)
         self.drive.settings(Constants.STRAIGHT_SPEED, Constants.STRAIGHT_ACCEL, Constants.TURN_SPEED, Constants.TURN_ACCEL)
         
