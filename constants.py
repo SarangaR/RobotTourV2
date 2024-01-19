@@ -23,11 +23,11 @@ TURN_ACCEL = 10000 #mm/s^2
 SLOW_TURN_SPEED = 250 #mm/s
 SLOW_TURN_ACCEL = 125 #mm/s^2
 
-KP = 2.5
+KP = 3
 KI = 0
-KD = 1
+KD = 0
 
-DKP = 3.5
+DKP = 3
 DKI = 0
 DKD = 0 
 
@@ -35,4 +35,4 @@ TOLERANCE = 1 #degrees
 
 D_TOLERANCE = 5 #encoder ticks
 
-ROBOT_LENGTH = 171 #mm
+ROBOT_LENGTH = 150 #mm

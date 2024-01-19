@@ -17,14 +17,19 @@ robot = Robot()
 robot.stop()
 robot.resetAll()
 
+curr = 0
+
 for step in path:
     split = step.split(" ")
     if split[0] == "tile":
-        robot.driveTiles(float(split[1]))
+        for i in range(int(split[1])):
+            robot.driveTiles(1)
+        
+        # robot.driveTiles(float(split[1]))
     elif split[0] == "turn":
         robot.turn(int(split[1]))
     elif split[0] == "left" and len(split) == 2:
-        robot.turnLeft90()
+        robot.turn(int)
         robot.driveTiles(int(split[1]))
     elif split[0] == "left":
         robot.turnLeft90()
