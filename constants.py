@@ -10,8 +10,8 @@ GYRO_PORT = Port.S2
 
 TILE_LENGTH = 500 #mm
 
-STRAIGHT_SPEED = 1000 #mm/s
-STRAIGHT_ACCEL = 500 #mm/s^2
+STRAIGHT_SPEED = 2000 #mm/s
+STRAIGHT_ACCEL = 1000 #mm/s^2
 
 SLOW_STRAIGHT_SPEED = 100 #mm/s
 SLOW_STRAIGHT_ACCEL = 100 #mm/s^2
@@ -27,6 +27,12 @@ KP = 2.5
 KI = 0
 KD = 1
 
+DKP = 1
+DKI = 0
+DKD = 0
+
 TOLERANCE = 1 #degrees
+
+D_TOLERANCE = 5 #encoder ticks
 
 ROBOT_LENGTH = 171 #mm
