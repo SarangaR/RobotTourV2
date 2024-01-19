@@ -6,11 +6,13 @@ import numbers
 import constants as Constants
 import pathfinding as Pathfinding
 
-Pathfinding.shortestPath()
+path = Pathfinding.shortestPath()
+
+# path = ['tile 1']
 
 robot = Robot()
 
-path = Path.PATH
+# path = Path.PATH
 
 robot.stop()
 robot.resetAll()

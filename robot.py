@@ -98,9 +98,9 @@ class Robot:
         
         self.drive_pid.reset()
         
-        self.drive_pid.setKp(2)
-        self.drive_pid.setKi(0)
-        self.drive_pid.setKd(0)
+        # self.drive_pid.setKp(2)
+        # self.drive_pid.setKi(0)
+        # self.drive_pid.setKd(0)
         
         self.gyro.reset_angle(0)
         

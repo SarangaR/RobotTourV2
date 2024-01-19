@@ -31,8 +31,8 @@ def bfs(start, bonus_zones, wood_blocks, minimum_path):
 def shortestPath():    
     stdin = open("board-input.txt", "r")
     stdout = open("path-input.txt", "w")
-    
-    start = tuple(map(int, stdin.readline().split()))
+    m = int(stdin.readline())
+    start = (m * 2 + 1, 0)
     a, b = map(int, stdin.readline().split())
     target = (a * 2 + 1, b * 2 + 1)
 
@@ -106,7 +106,7 @@ def shortestPath():
             instructions.append("tile " + str(int(cum)))
             cum = 0
         if abs(ndir - curr_dir) == 2:
-            instructions.append("turn 180")
+            instructions.extend(["left", "left"])
         elif ndir - curr_dir == 1 or ndir - curr_dir == -3:
             instructions.append("left")
         elif ndir - curr_dir == -1 or ndir - curr_dir == 3:
@@ -115,7 +115,8 @@ def shortestPath():
         cum += 0.5
     if cum != 0:
         instructions.append ("tile " + str(int(cum)))
-    for s in instructions:
-        stdout.write(s + "\n")
+    return instructions
+    # for s in instructions:
+    #     stdout.write(s + "\n")
     stdin.close()
     stdout.close()

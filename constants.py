@@ -27,9 +27,9 @@ KP = 2.5
 KI = 0
 KD = 1
 
-DKP = 1
+DKP = 3.5
 DKI = 0
-DKD = 0
+DKD = 0 
 
 TOLERANCE = 1 #degrees
 
