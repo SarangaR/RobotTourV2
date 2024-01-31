@@ -1,6 +1,5 @@
 #!/usr/bin/env pybricks-micropython
 from robot import Robot
-import path as Path
 from inspect import getsource
 import numbers
 import constants as Constants
