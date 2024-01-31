@@ -6,8 +6,8 @@ import constants as Constants
 import pathfinding as Pathfinding
 
 path = Pathfinding.shortestPath()
-
-# path = ['tile 1']
+# 
+# path = ['left', 'left', 'left', 'left']
 
 robot = Robot()
 

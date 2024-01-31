@@ -92,8 +92,8 @@ class Robot:
     def gyroDriveStraightPID(self, d):
         self.turn_pid.reset()
         
-        self.turn_pid.setKp(2)
-        self.turn_pid.setKi(0)
+        self.turn_pid.setKp(3)
+        self.turn_pid.setKi(0.00001)
         self.turn_pid.setKd(0)
         
         self.drive_pid.reset()
@@ -134,11 +134,12 @@ class Robot:
             speed_calc = self.drive_pid.calculate(self.drive.distance())
             if self.turn_pid.isDone():
                 self.drive.drive(speed_calc, 0)
-            elif self.drive_pid.isDone():
-                self.drive.drive(0, calc)
             else:
+            # elif self.drive_pid.isDone():
                 self.drive.drive(speed_calc, calc)
-                
+            # else:
+            #     self.drive.drive(speed_calc, calc)
+            # done = self.drive_pid.isDone()
             done = self.turn_pid.isDone() and self.drive_pid.isDone()
         
         self.drive.stop()
