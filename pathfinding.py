@@ -115,6 +115,8 @@ def shortestPath():
         cum += 0.5
     if cum != 0:
         instructions.append ("tile " + str(int(cum)))
+    # for s in instructions:
+    #     print(s)
     return instructions
     # for s in instructions:
     #     stdout.write(s + "\n")
