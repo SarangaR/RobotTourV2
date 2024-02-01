@@ -40,10 +40,10 @@ class Robot:
 
     def driveTiles(self, tiles):
         if self.first:
-            self.gyroDriveStraightPID((tiles * Constants.TILE_LENGTH) - Constants.TILE_LENGTH/2 + Constants.ROBOT_LENGTH/2)
+            self.gyroDriveStraightPID((tiles * Constants.TILE_LENGTH) - Constants.TILE_LENGTH/2 + Constants.AXIS_DISTANCE)
             self.first = False
         else:
-            self.gyroDriveStraightPID(tiles * Constants.TILE_LENGTH + Constants.ROBOT_LENGTH/2)
+            self.gyroDriveStraightPID(tiles * Constants.TILE_LENGTH + Constants.AXIS_DISTANCE)
             
     def gyroReset(self):
         self.gyro.reset_angle(0)
