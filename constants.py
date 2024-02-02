@@ -26,7 +26,7 @@ SLOW_TURN_SPEED = 250 #mm/s
 SLOW_TURN_ACCEL = 125 #mm/s^2
 
 KP = 3
-KI = 0.00001
+KI = 0
 KD = 0
 
 DKP = 2.5
