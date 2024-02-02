@@ -75,7 +75,7 @@ class Robot:
         # self.gyro.reset_angle(0)
         
         time.sleep(0.1)
-        
+
     def turnLeft90(self):
         self.turn(-90)
         
