@@ -13,8 +13,8 @@ class Robot:
         self.left = Motor(Constants.LEFT_MOTOR_PORT)
         self.right = Motor(Constants.RIGHT_MOTOR_PORT)
 
-        print(Constants.WHEEL_DIAMETER)
-        print(Constants.TRACK_WIDTH)
+        # print(Constants.WHEEL_DIAMETER)
+        # print(Constants.TRACK_WIDTH)
 
         self.drive = DriveBase(self.left, self.right, Constants.WHEEL_DIAMETER, Constants.TRACK_WIDTH)
         self.drive.settings(Constants.STRAIGHT_SPEED, Constants.STRAIGHT_ACCEL, Constants.TURN_SPEED, Constants.TURN_ACCEL)
@@ -44,20 +44,22 @@ class Robot:
             self.first = False
         else:
             self.gyroDriveStraightPID(tiles * Constants.TILE_LENGTH + Constants.AXIS_DISTANCE)
-            
+    def driveLess(self, tiles):
+        self.gyroDriveStraightPID(tiles * Constants.TILE_LENGTH)
+
     def gyroReset(self):
         self.gyro.reset_angle(0)
         time.sleep(0.1)
 
     def turn(self, degrees):
-        self.turn_pid.reset()
+        # self.turn_pid.reset()
         
-        self.turn_pid.setKp(Constants.KP)
-        self.turn_pid.setKi(Constants.KI)
-        self.turn_pid.setKd(Constants.KD)
-        
-        self.turn_pid.setTarget(degrees)
-        self.turn_pid.setTolerance(2)
+        # self.turn_pid.setKp(Constants.KP)
+        # self.turn_pid.setKi(Constants.KI)
+        # self.turn_pid.setKd(Constants.KD)
+
+        self.turn_pid.setTarget(round(self.gyro.angle()/90) * 90 + degrees)
+        # self.turn_pid.setTolerance(0.5)
         
         self.drive.stop()
         self.drive.settings(Constants.STRAIGHT_SPEED, Constants.STRAIGHT_ACCEL, Constants.TURN_SPEED, Constants.TURN_ACCEL)
@@ -70,7 +72,7 @@ class Robot:
             
         self.drive.stop()
         
-        self.gyro.reset_angle(0)
+        # self.gyro.reset_angle(0)
         
         time.sleep(0.1)
         
@@ -90,24 +92,24 @@ class Robot:
         self.gyroDriveStraightPID(distance)
         
     def gyroDriveStraightPID(self, d):
-        self.turn_pid.reset()
+        # self.turn_pid.reset()
         
-        self.turn_pid.setKp(3)
-        self.turn_pid.setKi(0.00001)
-        self.turn_pid.setKd(0)
+        # self.turn_pid.setKp(3)
+        # self.turn_pid.setKi(0.00001)
+        # self.turn_pid.setKd(0)
         
-        self.drive_pid.reset()
+        # self.drive_pid.reset()
         
         # self.drive_pid.setKp(2)
         # self.drive_pid.setKi(0)
         # self.drive_pid.setKd(0)
         
-        self.gyro.reset_angle(0)
+        # self.gyro.reset_angle(0)
         
-        self.turn_pid.setTarget(0)
-        self.turn_pid.setTolerance(2)
+        self.turn_pid.setTarget(round(self.gyro.angle()/90) * 90)
+        # self.turn_pid.setTolerance(0.5)
         
-        self.drive_pid.setTolerance(5)
+        # self.drive_pid.setTolerance(3)
         
         self.drive.stop()
         self.drive.settings(Constants.STRAIGHT_SPEED, Constants.STRAIGHT_ACCEL, Constants.TURN_SPEED, Constants.TURN_ACCEL)
@@ -116,7 +118,7 @@ class Robot:
         
         distance = d
         
-        print("Distance" + str(distance))
+        # print("Distance" + str(distance))
         
         
         if distance < 0:
@@ -143,7 +145,7 @@ class Robot:
             done = self.turn_pid.isDone() and self.drive_pid.isDone()
         
         self.drive.stop()
-        self.turn(0)
+        # self.turn(0)
         time.sleep(0.1)
 
     def stop(self):

@@ -1,0 +1,11 @@
+[Start Point] -> 0, 1, 2, 3
+[End Point] -> (x, y)
+[# of Gate Zones] -> followed by __ lines
+[Gate Zone 1 Coordinate]
+000
+000
+000
+000 -> Vertical Walls, 1 = wall present
+0000
+0000
+0000 -> Horizontal Walls, 

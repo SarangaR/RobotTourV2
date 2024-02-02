@@ -21,8 +21,13 @@ curr = 0
 for step in path:
     split = step.split(" ")
     if split[0] == "tile":
-        for i in range(int(split[1])):
-            robot.driveTiles(1)
+        if curr == len(path) - 1:  
+            for i in range(int(split[1]) - 1):
+                robot.driveTiles(1)
+            robot.driveLess(1)
+        else:
+            for i in range(int(split[1])):
+                robot.driveTiles(1)
         
         # robot.driveTiles(float(split[1]))
     elif split[0] == "turn":
@@ -58,6 +63,7 @@ for step in path:
         robot.stop()
     elif split[0] == "reset":
         robot.resetAll()
-    print(step)
+    # print(step)
+    curr += 1
     
 path.PATH = []
