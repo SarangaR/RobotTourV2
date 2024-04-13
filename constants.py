@@ -27,13 +27,13 @@ SLOW_TURN_ACCEL = 125 #mm/s^2
 
 KP = 3
 KI = 0
-KD = 0
+KD = 0.5
 
 DKP = 2.5
 DKI = 0
 DKD = 0 
 
-TOLERANCE = 1.5 #degrees
+TOLERANCE = 0.5 #degrees
 
 D_TOLERANCE = 5 #encoder ticks
 

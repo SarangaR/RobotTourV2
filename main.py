@@ -7,7 +7,7 @@ import pathfinding as Pathfinding
 
 path = Pathfinding.shortestPath()
 # 
-# path = ['left', 'left', 'left', 'left']
+# path = ['tile 1', 'right', 'tile 1', 'right', 'tile 1', 'right', 'tile 1']
 
 robot = Robot()
 
